@@ -10,7 +10,7 @@ function WorkoutForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const workout = { title, reps, load };
-    const response = await fetch("/api/workouts", {
+    const response = await fetch("http://localhost:4000/api/workouts", {
       method: "POST",
       body: JSON.stringify(workout),
       headers: {
@@ -54,7 +54,7 @@ function WorkoutForm() {
           type="text"
           onChange={(e) => setReps(e.target.value)}
           value={reps}
-          placeholder="Enter Reps"
+          placeholder="Enter Number of Reps"
           className={emptyfield.includes("reps") ? "block outline-none border-red-600 border w-[300px] p-2":"block outline-none border w-[300px] p-2"}
         />
        </div>
@@ -65,7 +65,7 @@ function WorkoutForm() {
           type="number"
           onChange={(e) => setLoad(e.target.value)}
           value={load}
-          placeholder="Select number"
+          placeholder="Select Load"
           className={emptyfield.includes("load") ? "block outline-none border-red-600 border w-[300px] p-2":"block outline-none border w-[300px] p-2"}
         />
         </div>

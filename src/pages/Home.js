@@ -5,7 +5,8 @@ import WorkoutDetails from "../components/WorkoutDetails";
 import WorkoutForm from "../components/WorkoutForm";
 function Home() {
   // const [workouts, setWorkout] = useState(null);
-  const {workouts,dispatch} = useWorkoutsContext()
+  const {filteredWorkout,dispatch} = useWorkoutsContext()
+console.log({filteredWorkout})
   // This hook helps to connect to the API for getting all books to be rendered on this component on pageload
   useEffect(() => {
     fetchAllWorkout();
@@ -23,10 +24,10 @@ function Home() {
   return (
     <div className="container p-4 md:p-8 flex md:flex-row flex-col-reverse  justify-between  gap-4 m-auto mt-32">
       <div className=" md:w-1/2 grid grid-cols-1 gap-4">
-      {workouts &&
-        workouts.map((workout) => (
-          <div className=' shadow-lg space-y-4'>
-            <WorkoutDetails key={workout._id} workout ={workout} />
+      {filteredWorkout &&
+        filteredWorkout.map((workout) => (
+          <div className=' shadow-lg space-y-4'key={workout._id}>
+            <WorkoutDetails  workout ={workout} />
           </div>
         ))}
       </div>
